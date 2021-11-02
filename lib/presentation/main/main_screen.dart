@@ -19,7 +19,7 @@ class _MainScreenState extends State<MainScreen> {
   int indexTab = 0;
 
   void indexChange(index) {
-
+    int r = 0;
   }
 
   @override

@@ -9,12 +9,13 @@ class QuoteList extends StatefulWidget {
 }
 
 class _QuoteListState extends State<QuoteList> {
-
   List<Quote> quotes = [
     Quote(eventName: "Music club",date: "11.11.2021",time:"19:00",payment:"1000tg"),
     Quote(eventName: "Sport club",date: "18.12.2021",time:"16:00",payment:"500tg"),
     Quote(eventName: "IQ club",date: "23.12.2021",time:"15:00",payment:"1500tg"),
     Quote(eventName: "IT club",date: "14.01.2022",time:"21:00",payment:"3000tg"),
+    Quote(eventName: "IT club",date: "14.01.2022",time:"21:00",payment:"3000tg"),
+
   ];
 
   @override
