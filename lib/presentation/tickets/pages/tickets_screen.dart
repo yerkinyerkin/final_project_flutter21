@@ -1,20 +1,120 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class TicketsScreen extends StatefulWidget {
-  const TicketsScreen({Key? key}) : super(key: key);
+
+class QuoteList extends StatefulWidget {
+  const QuoteList({Key? key}) : super(key: key);
 
   @override
-  _TicketsScreenState createState() => _TicketsScreenState();
+  _QuoteListState createState() => _QuoteListState();
 }
 
-class _TicketsScreenState extends State<TicketsScreen> {
+class _QuoteListState extends State<QuoteList> {
+
+  List<Quote> quotes = [
+    Quote(eventName: "Music club",date: "11.11.2021",time:"19:00",payment:"1000tg"),
+    Quote(eventName: "Sport club",date: "18.12.2021",time:"16:00",payment:"500tg"),
+    Quote(eventName: "IQ club",date: "23.12.2021",time:"15:00",payment:"1500tg"),
+    Quote(eventName: "IT club",date: "14.01.2022",time:"21:00",payment:"3000tg"),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text("Tickets"),
+        centerTitle: true,
+        backgroundColor: Colors.redAccent,
+      ),
+      body:
+      Column(
+        children: [
+          Center(child:Container(
+              padding: EdgeInsets.fromLTRB(20, 40, 20, 20),
+              child: Text('Tickets',
+                  style: TextStyle(fontSize: 28)))),
+          Expanded(
+            child: ListView(
+              children: quotes.map((quote) => QuoteCard(
+                quote: quote,
+              )).toList(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+class Quote {
+  String eventName;
+  String date;
+  String time;
+  String payment;
+
+  Quote({required this.eventName,required this.date,required this.time,required this.payment});
+}
+
+class QuoteCard extends StatelessWidget {
+  final Quote quote;
+  // final Function delete;
+  QuoteCard({required this.quote});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: SafeArea(
+      child: Card(
+        margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
         child: Container(
-          color: Colors.white,
+          color: Colors.yellow,
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Text(
+                  quote.eventName,
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    color: Colors.grey[600],
+                  ),
+                ),
+                SizedBox(
+                  height: 6.0,
+                ),
+                Text(
+                  quote.date,
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: Colors.grey[800],
+                  ),
+                ),
+                SizedBox(height: 8.0),
+                Text(
+                  quote.time,
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    color: Colors.grey[600],
+                  ),
+                ),
+                SizedBox(
+                  height: 6.0,
+                ),
+                Text(
+                  quote.payment,
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    color: Colors.grey[600],
+                  ),
+                ),
+                SizedBox(
+                  height: 6.0,
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

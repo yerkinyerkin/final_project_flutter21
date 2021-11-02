@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:project/core/routes/router.dart';
 import 'package:project/presentation/home/pages/home_screen.dart';
@@ -16,13 +15,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-
-  List<Widget> _tabs = [
-    HomeScreen(),
-    TicketsScreen(),
-    ProfileScreen(),
-    InfoScreen()
-  ];
 
   int indexTab = 0;
 
@@ -51,7 +43,7 @@ class _MainScreenState extends State<MainScreen> {
             navigatorObservers: [GetObserver((_) {}, Get.routing)],
             onGenerateRoute: (settings) =>
                 InnLabRouter.generateRoute(settings),
-            builder: (_) => TicketsScreen(),
+            builder: (_) => QuoteList(),
           ),
           CupertinoTabView(
             navigatorKey: Get.nestedKey(2),
