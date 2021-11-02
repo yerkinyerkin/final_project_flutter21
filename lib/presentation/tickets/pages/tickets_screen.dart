@@ -15,7 +15,6 @@ class _QuoteListState extends State<QuoteList> {
     Quote(eventName: "IQ club",date: "23.12.2021",time:"15:00",payment:"1500tg"),
     Quote(eventName: "IT club",date: "14.01.2022",time:"21:00",payment:"3000tg"),
     Quote(eventName: "IT club",date: "14.01.2022",time:"21:00",payment:"3000tg"),
-
   ];
 
   @override
