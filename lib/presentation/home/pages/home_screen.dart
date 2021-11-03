@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:project/presentation/auth/pages/sign_in.dart';
+// import 'package:project/presentation/auth/pages/sign_in.dart';
 import 'package:project/presentation/home/model/events_model.dart';
 
 class HomeScreen extends StatefulWidget {

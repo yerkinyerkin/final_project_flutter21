@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:project/presentation/main/main_screen.dart';
+import 'package:project/presentation/wrapper.dart';
 
 void main() {
   runApp(MaterialApp(home: MyApp()));
@@ -19,7 +19,7 @@ class _MyAppState extends State<MyApp> {
     return Scaffold(
       body: MaterialApp(
           debugShowCheckedModeBanner: false,
-        home: MainScreen(),
+        home: Wrapper(),
       ),
     );
   }
