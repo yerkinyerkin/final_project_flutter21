@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project/presentation/home/model/events_model.dart';
+import 'package:project/presentation/home/pages/EventCreate.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -35,11 +36,18 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 16,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children:  [
                 Container(
-                  child: Icon(Icons.add_circle_outline, color: Colors.black.withOpacity(0.3) ,size: 32,),
+                  child: ElevatedButton(
+                      onPressed: () {  Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const EventCreate()));},
+                      child:Icon(
+                        Icons.add_circle_outline, color: Colors.black.withOpacity(0.3) ,size: 32,)
+                  ),
                   color: Colors.white,
                 ),
+
                 Text('Press to Create Event', style: TextStyle(color: Colors.black.withOpacity(0.3), fontSize: 24, fontWeight: FontWeight.w400),)
               ],
             ),
