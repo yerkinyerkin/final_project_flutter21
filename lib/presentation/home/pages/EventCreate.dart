@@ -32,11 +32,8 @@ class _EventCreateState extends State<EventCreate> {
         ],
       ),
       body: SingleChildScrollView(
-
         child:Column(
-
           children: <Widget>[
-
             SizedBox(
               height: 200,
 
@@ -63,7 +60,6 @@ class _EventCreateState extends State<EventCreate> {
               ),
             ),
             Padding(
-
               padding: const EdgeInsets.only(
                   left: 15.0, right: 15.0, top: 20, bottom: 10,),
               //padding: EdgeInsets.symmetric(horizontal: 15),

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:project/core/routes/routes_const.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -27,16 +28,22 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.add_circle_outline, size: 32,
-                        color: Color(0xff808A9D),),
-                      SizedBox(width: 4,),
-                      Text('Create Event', style: TextStyle(fontSize: 24,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xff808A9D)),)
-                    ],
+                  child: CupertinoButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, CreateEvent);
+                    },
+                    padding: EdgeInsets.zero,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.add_circle_outline, size: 32,
+                          color: Color(0xff808A9D),),
+                        SizedBox(width: 4,),
+                        Text('Create Event', style: TextStyle(fontSize: 24,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff808A9D)),)
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(height: 20,),
