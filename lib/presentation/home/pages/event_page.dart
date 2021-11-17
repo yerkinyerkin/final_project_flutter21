@@ -47,7 +47,7 @@ class _EventPageState extends State<EventPage> {
                         width: 55,
                         child: ClipRRect(
                           borderRadius: BorderRadius.all(Radius.circular(25)),
-                          child: Image.asset("assets/profile_default.png"),
+                          child: Image.asset("assets/images/profile.png"),
                         ),
                       ),
                       SizedBox(
@@ -80,20 +80,29 @@ class _EventPageState extends State<EventPage> {
             ],
           )),
 
-
-             CircleAvatar(
-               radius: 127.5,
-               backgroundColor: Colors.black,
-               child: CircleAvatar(
-                 backgroundColor: Colors.white,
-                 child: SvgPicture.asset(
-                   '/profile_page_icons/profile_photo_placeholder.svg',
-                   width: 143,
-                   height: 186,
+             Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+               Container(
+                 decoration: BoxDecoration(
+                   borderRadius: const BorderRadius.all(Radius.circular(20)),
+                   boxShadow: [
+                     BoxShadow(
+                       color: Colors.grey.withOpacity(0.7),
+                       spreadRadius: 5,
+                       blurRadius: 9,
+                       offset: Offset(0, 4), // Shadow position
+                     ),
+                   ],
+                   image: DecorationImage(
+                     image: NetworkImage('assets/icons/sdu-logo.svg'),
+                     fit: BoxFit.cover,
+                   ),
                  ),
-                 radius: 126.5,
+                 height: 315,
+                 width: MediaQuery.of(context).size.width,
                ),
-             ),
+             ]),
+
+
              Padding(
                  padding: const EdgeInsets.only(
                      left: 0, right: 15.0, top: 20, bottom: 10),
@@ -153,4 +162,3 @@ class _EventPageState extends State<EventPage> {
     )));
   }
 }
-
