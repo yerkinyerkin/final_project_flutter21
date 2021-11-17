@@ -14,11 +14,11 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
 
   final List info_items = [
-    ['profile_page_icons/png/birth_date_icon.png','-----------'],
-    ['profile_page_icons/png/hometown_icon.png','-----------'],
-    ['profile_page_icons/png/faculty_icon.png','-----------'],
-    ['profile_page_icons/png/club_icon.png','-----------'],
-    ['profile_page_icons/png/event_icon.png','0 Events Created']
+    ['assets/profile_page_icons/png/birth_date_icon.png','-----------'],
+    ['assets/profile_page_icons/png/hometown_icon.png','-----------'],
+    ['assets/profile_page_icons/png/faculty_icon.png','-----------'],
+    ['assets/profile_page_icons/png/club_icon.png','-----------'],
+    ['assets/profile_page_icons/png/event_icon.png','0 Events Created']
   ];
   int _currentSelection = 0;
   Map<int, Widget> _children = {

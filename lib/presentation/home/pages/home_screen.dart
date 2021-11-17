@@ -81,10 +81,31 @@ class _HomeScreenState extends State<HomeScreen> {
                               borderRadius: BorderRadius.all(Radius.circular(10)),
                               color: Colors.white,
                             ),
-                            child: Column(
-                              children: [
-                                SvgPicture.asset('assets/icons/clublogo1.svg')
-                              ],
+                            child: Padding(
+                              padding: EdgeInsets.all(10.0),
+                              child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Stack(
+                                    children: [
+                                      Container(
+                                        width: 55,
+                                        height: 55,
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: Colors.red),
+                                      ),
+                                      Positioned(
+                                        top: 16,
+                                          left: 6,
+                                          child: SvgPicture.asset('assets/icons/sdu-logo.svg', color: Colors.white,)
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(height: 16,),
+                                  Text('club name')
+                                ],
+                              ),
                             ),
                           ),
                           index == 9 ? SizedBox(width: 16,) : Offstage()
@@ -93,7 +114,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     }
                     ),
                   ),
-                )
+                ),
+                SizedBox(height: 32,),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Events', style: TextStyle(
+                          fontWeight: FontWeight.w700, fontSize: 30),),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
