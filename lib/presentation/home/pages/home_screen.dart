@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:project/core/routes/routes_const.dart';
+import 'package:project/presentation/home/model/events_model.dart';
+import 'package:project/presentation/home/model/news_events.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -10,7 +12,40 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
+
 class _HomeScreenState extends State<HomeScreen> {
+
+  List<EventModel> list = [
+    EventModel(
+      Colors.blue,
+      'MountKings'
+    ),
+    EventModel(
+        Colors.red,
+        'KingsSpeech'
+    ),
+    EventModel(
+        Colors.black,
+        'Dance'
+    ),
+    EventModel(
+        Colors.blue,
+        'MountKings'
+    ),
+    EventModel(
+        Colors.red,
+        'KingsSpeech'
+    ),
+    EventModel(
+        Colors.black,
+        'Dance'
+    ),
+  ];
+  
+  List<NewsEventsModel> news = [
+    NewsEventsModel('', 'Welcome Party ', 'text...', '20.10.21')
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 110,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
-                    children: List.generate(10, (int index) {
+                    children: List.generate(6, (int index) {
                       return Row(
                         children: [
                           SizedBox(width: 16,),
@@ -93,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         height: 55,
                                         decoration: BoxDecoration(
                                             shape: BoxShape.circle,
-                                            color: Colors.red),
+                                            color: list[index].color),
                                       ),
                                       Positioned(
                                         top: 16,
@@ -103,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ],
                                   ),
                                   SizedBox(height: 16,),
-                                  Text('club name')
+                                  Text(list[index].clubName)
                                 ],
                               ),
                             ),
