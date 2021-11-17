@@ -73,7 +73,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: MaterialSegmentedControl(
                         children: _children,
                         selectionIndex: _currentSelection,
-                        borderColor: Color(0xff3861FB),
+                        borderColor: Color(0xff3861fb),
                         selectedColor: Color(0xff3861FB),
                         unselectedColor: Colors.white,
                         borderRadius: 32.0,
