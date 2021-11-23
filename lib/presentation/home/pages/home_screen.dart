@@ -57,6 +57,8 @@ class _HomeScreenState extends State<HomeScreen> {
           'Home', style: TextStyle(fontSize: 30, fontWeight: FontWeight.w400),),
       ),
       body: Container(
+
+        
         color: Colors.black.withOpacity(0.07),
         child: SafeArea(
           child: Padding(

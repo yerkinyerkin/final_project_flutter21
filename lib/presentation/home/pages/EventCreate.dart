@@ -1,5 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import "package:image_cropper/image_cropper.dart";
+import "package:image_picker/image_picker.dart";
+import 'package:material_segmented_control/material_segmented_control.dart';
+import 'event_page.dart';
+import 'home_screen.dart';
+import 'dart:io';
+
 
 class EventCreate extends StatefulWidget {
   const EventCreate({Key? key}) : super(key: key);
@@ -10,6 +17,57 @@ class EventCreate extends StatefulWidget {
 }
 
 class _EventCreateState extends State<EventCreate> {
+  File? _selectedFile;
+
+  Widget getImageWidget(){
+    if(null == _selectedFile){
+      return Image.asset(
+        "assets/images/create_event_icon.png",
+        width: 300,
+        height: 105,
+        fit: BoxFit.cover,
+      );
+    }
+    else{
+      return Image.file(
+        _selectedFile!,
+        width: 300,
+        height: 105,
+        fit: BoxFit.cover,
+      );
+    }
+  }
+
+  getImage(ImageSource imageSource) async {
+    // File image = await ImagePicker.pickImage(source: ImageSource.camera);
+    final ImagePicker _picker = ImagePicker();
+    XFile? image = await _picker.pickImage(source: imageSource);
+    if (image != null){
+      File? cropped = await ImageCropper.cropImage(sourcePath: image.path,
+          aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
+          compressQuality: 100,
+          maxWidth: 700,
+          maxHeight: 700,
+          compressFormat: ImageCompressFormat.jpg,
+          androidUiSettings: const AndroidUiSettings(
+            toolbarColor: Color(0xff3861FB),
+            toolbarTitle: "RPS Cropper",
+            statusBarColor: Color(0xff3861FB),
+            backgroundColor: Colors.white,
+          )
+      );
+      setState(() {
+        _selectedFile = cropped;
+      });
+    }
+
+
+  }
+  int _currentSelection = 0;
+  Map<int, Widget> _children = {
+    0:  Container(width: 171.5, child:Center(child:Text('Paid participation'))),
+    1: Container(width: 171.5, child:Center(child:Text('Free'))),
+  };
 
   DateTime _dateTime = DateTime.now();
   @override
@@ -26,7 +84,9 @@ class _EventCreateState extends State<EventCreate> {
               color: Colors.white,
             ),
             onPressed: () {
-              // do something
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()) ,);
             },
           )
         ],
@@ -71,20 +131,42 @@ class _EventCreateState extends State<EventCreate> {
               ),
             ),
             Container(
-              height: 100,
+             /* height: 100,
               width: 250,
               padding: const EdgeInsets.only(
                   left: 15.0, right: 15.0, top: 20, bottom: 0),
               decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
-              child: FlatButton(
+                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),*/
+
+              /*child: FlatButton(
                 onPressed: (){},
-                child: Text(
+
+               child: Text(
                   'Upload image',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
+              ),*/
+              child: Column(
+                children: [
+                Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  getImageWidget()
+                  // Image.asset('assets/image/add.png')//assets/image/add.png
+                ],
               ),
+              Padding(padding: EdgeInsets.only(top: 10),),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(onPressed: () {getImage(ImageSource.camera);
+                  }, child:Text("from camera", style: TextStyle(color: Colors.white))),
+                  ElevatedButton(onPressed:(){ getImage(ImageSource.gallery);
+                  }, child:Text("from device", style: TextStyle(color: Colors.white),)),
+                ],
+              ),]
             ),
+      ),
             Padding(
               padding: const EdgeInsets.only(
                   left: 15.0, right: 15.0, top: 20, bottom: 10),
@@ -97,29 +179,27 @@ class _EventCreateState extends State<EventCreate> {
               )),
         Container(
           padding: const EdgeInsets.only(
-              left: 15.0, right: 15.0, top: 20, bottom: 10),
-          child: Row(
-
-
-            children: <Widget>[
-
-              Expanded(
-                child: RaisedButton(
-                  onPressed: () {},
-                  child: Text("Paid participation",),
-                ),
-              ),
-              Expanded(
-                child: RaisedButton(
-                  child: Text("Free"),
-                  color: Colors.red,
-
-                  onPressed: () {},
-                ),
+              left: 15.0, right: 15.0, top: 20, bottom: 10),),
+          Padding(
+              padding: EdgeInsets.only(top: 32),
+              child: MaterialSegmentedControl(
+                children: _children,
+                selectionIndex: _currentSelection,
+                borderColor: Color(0xff3861fb),
+                selectedColor: Color(0xff3861FB),
+                unselectedColor: Colors.white,
+                borderRadius: 32.0,
+                disabledChildren: [
+                  2,
+                ],
+                onSegmentChosen: (int index) {
+                  setState(() {
+                    _currentSelection = index;
+                  });
+                },
               )
-            ],
           ),
-        ),
+
             Padding(
                 padding: const EdgeInsets.only(
                     left: 15.0, right: 15.0, top: 20, bottom: 10),
@@ -158,7 +238,12 @@ class _EventCreateState extends State<EventCreate> {
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(20)),
               child: FlatButton(
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => EventPage()),
+                  );
+                },
                 child: Text(
                   'Save',
                   style: TextStyle(color: Colors.black, fontSize: 25),
