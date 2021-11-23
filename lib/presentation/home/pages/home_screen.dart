@@ -17,8 +17,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<EventModel> list = [
     EventModel(
-      Colors.blue,
-      'MountKings'
+        Colors.blue,
+        'MountKings'
     ),
     EventModel(
         Colors.red,
@@ -41,9 +41,11 @@ class _HomeScreenState extends State<HomeScreen> {
         'Dance'
     ),
   ];
-  
+
   List<NewsEventsModel> news = [
-    NewsEventsModel('', 'Welcome Party ', 'text...', '20.10.21')
+    NewsEventsModel('assets/images/event_1.png', 'Welcome Party', 'descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescri...', '20.10.21'),
+    NewsEventsModel('assets/images/event_2.png', 'Mountain Trip', 'descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescri...', '20.10.21'),
+    NewsEventsModel('assets/images/event_3.png', 'Book crossing', 'descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescri...', '20.10.21')
   ];
 
   @override
@@ -64,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16),
                   child: CupertinoButton(
-                    onPressed: (){
+                    onPressed: () {
                       Navigator.pushNamed(context, CreateEvent);
                     },
                     padding: EdgeInsets.zero,
@@ -113,13 +115,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             height: 110,
                             width: 110,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(10)),
                               color: Colors.white,
                             ),
                             child: Padding(
                               padding: EdgeInsets.all(10.0),
                               child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Stack(
                                     children: [
@@ -131,9 +134,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                             color: list[index].color),
                                       ),
                                       Positioned(
-                                        top: 16,
+                                          top: 16,
                                           left: 6,
-                                          child: SvgPicture.asset('assets/icons/sdu-logo.svg', color: Colors.white,)
+                                          child: SvgPicture.asset(
+                                            'assets/icons/sdu-logo.svg',
+                                            color: Colors.white,)
                                       )
                                     ],
                                   ),
@@ -160,6 +165,50 @@ class _HomeScreenState extends State<HomeScreen> {
                       Text('Events', style: TextStyle(
                           fontWeight: FontWeight.w700, fontSize: 30),),
                     ],
+                  ),
+                ),
+                SizedBox(height: 24,),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Expanded(
+                    child: ListView(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      children: List.generate(news.length, (int index) {
+                        return Column(
+                          children: [
+                            Container(
+                              child: Row(
+                                children: [
+                                  Image.asset(news[index].image, width: 90, height: 90,),
+                                  SizedBox(width: 12,),
+                                  Expanded(
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(news[index].title),
+                                              Text(news[index].date),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(height: 7,),
+                                        Text(news[index].text),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(width: 12,)
+                                ],
+                              ),
+                            ),
+                            SizedBox(height: 32,)
+                          ],
+                        );
+                      }
+                      ),
+                    ),
                   ),
                 ),
               ],
