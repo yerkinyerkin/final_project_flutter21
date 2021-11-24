@@ -32,6 +32,57 @@ class _QuoteListState extends State<QuoteList> {
               padding: EdgeInsets.fromLTRB(20, 40, 20, 20),
               child: Text('Tickets',
                   style: TextStyle(fontSize: 28)))),
+          Padding(
+            padding: EdgeInsets.all(15),
+            child: TextField(
+              obscureText: false,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Club Name',
+                hintText: 'Enter Club Name',
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(15),
+            child: TextField(
+              obscureText: false,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Competition time',
+                hintText: 'Enter Competition time',
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(15),
+            child: TextField(
+              obscureText: false,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Competition date',
+                hintText: 'Enter Competition date',
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(15),
+            child: TextField(
+              obscureText: false,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Price',
+                hintText: 'Enter Price',
+              ),
+            ),
+          ),
+          OutlinedButton.icon(
+            onPressed: () {
+              // Respond to button press
+            },
+            icon: Icon(Icons.add, size: 18),
+            label: Text("Add Ticket"),
+          ),
           Expanded(
             child: ListView(
               children: quotes.map((quote) => QuoteCard(
